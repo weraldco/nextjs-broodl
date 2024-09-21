@@ -1,20 +1,9 @@
 import type { Metadata } from 'next';
-import { Fugaz_One } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Fugaz_One, Open_Sans } from 'next/font/google';
 import './globals.css';
 
-const geistSans = localFont({
-	src: './fonts/GeistVF.woff',
-	variable: '--font-geist-sans',
-	weight: '100 900',
-});
-const geistMono = localFont({
-	src: './fonts/GeistMonoVF.woff',
-	variable: '--font-geist-mono',
-	weight: '100 900',
-});
-
 export const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
+export const openSans = Open_Sans({ subsets: ['latin'] });
 export const metadata: Metadata = {
 	title: 'Broodl',
 	description: 'Track your daily mood everyday of the year!',
@@ -30,14 +19,21 @@ export default function RootLayout({
 			<h1 className={`text-base sm:text-lg textGradient ${fugaz.className}`}>
 				Broodl
 			</h1>
+			<div className="flex items-center justify-between">
+				PLACEHOLDER CTA || STATS
+			</div>
 		</header>
 	);
-	const footer = <footer className="p-4 sm:p-8">Footer</footer>;
+	const footer = (
+		<footer className="p-4 sm:p-8 place-items-center grid">
+			<p className={`text-indigo-400 ${fugaz.className}`}>Created with 💖</p>
+		</footer>
+	);
 
 	return (
 		<html lang="en">
 			<body
-				className={`w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-700 ${openSans.className} antialiased`}
 			>
 				{header}
 				{children}
