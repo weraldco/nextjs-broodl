@@ -1,3 +1,4 @@
+import { AuthProvider } from '@/context/AuthContext';
 import type { Metadata } from 'next';
 import { Fugaz_One, Open_Sans } from 'next/font/google';
 import Link from 'next/link';
@@ -35,13 +36,15 @@ export default function RootLayout({
 
 	return (
 		<html lang="en">
-			<body
-				className={`w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-700 ${openSans.className} antialiased`}
-			>
-				{header}
-				{children}
-				{footer}
-			</body>
+			<AuthProvider>
+				<body
+					className={`w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-700 ${openSans.className} antialiased`}
+				>
+					{header}
+					{children}
+					{footer}
+				</body>
+			</AuthProvider>
 		</html>
 	);
 }

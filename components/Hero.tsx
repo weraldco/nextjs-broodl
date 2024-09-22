@@ -1,11 +1,12 @@
 import { fugaz } from '@/app/layout';
+import Link from 'next/link';
 import Button from './Button';
 import Calendar from './Calendar';
 
 export default function Hero() {
 	return (
 		<>
-			<div className="py-4 md:py-10 flex flex-col gap-4 sm:gap-8">
+			<div className="py-4 md:py-10 flex flex-col gap-8 sm:gap-10 md:gap-14">
 				<h1
 					className={`text-5xl sm:text-6xl md:text-7xl text-center ${fugaz.className}`}
 				>
@@ -17,10 +18,14 @@ export default function Hero() {
 					<span className="font-semibold">every day of every year.</span>
 				</p>
 				<div className="grid grid-cols-2 gap-4 w-fit mx-auto">
-					<Button>Sign-up</Button>
-					<Button dark>Login</Button>
+					<Link href="/dashboard">
+						<Button>Sign-up</Button>
+					</Link>
+					<Link href="/dashboard">
+						<Button dark>Login</Button>
+					</Link>
 				</div>
-				<Calendar />
+				<Calendar demo />
 			</div>
 		</>
 	);
